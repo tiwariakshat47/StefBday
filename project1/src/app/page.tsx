@@ -34,15 +34,13 @@ export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    setHydrated(true);
-
     const initial = floatingImages.map(() => ({
       ...getRandomStyle(),
       visible: false,
     }));
     setImageStates(initial);
+    setHydrated(true);
 
-    // 🎵 Music autoplay with fallback on user interaction
     const tryPlay = () => {
       audioRef.current?.play().catch(() => {
         const onClick = () => {
@@ -52,7 +50,11 @@ export default function Home() {
         window.addEventListener("click", onClick);
       });
     };
-    tryPlay();
+
+    // Wait for DOM to stabilize before autoplay attempt
+    setTimeout(() => {
+      tryPlay();
+    }, 100);
   }, []);
 
   useEffect(() => {
@@ -97,67 +99,70 @@ export default function Home() {
     return () => timers.forEach(clearTimeout);
   }, [hydrated, imageStates.length]);
 
-  if (!hydrated) return null;
-
   return (
-    <div className="relative min-h-screen bg-pink-100 flex flex-col items-center justify-center overflow-hidden p-8">
-      {/* 🌟 Star Icons */}
-      {starIcons.map((star, i) => (
-        <div key={i} className={`absolute text-yellow-400 ${star.className}`}>
-          {star.icon}
-        </div>
-      ))}
-
-      {/* ✨ Floating Photos */}
-      {floatingImages.map((img, i) => (
-        <Image
-          key={i}
-          src={img.src}
-          alt={img.alt}
-          width={220}
-          height={220}
-          className={`absolute rounded-xl shadow-md transition-all duration-1000 ${imageStates[i]?.visible ? "opacity-100" : "opacity-0"}`}
-          style={{
-            top: imageStates[i]?.top,
-            left: imageStates[i]?.left,
-            transform: `rotate(${imageStates[i]?.rotate})`,
-            zIndex: 1,
-          }}
-        />
-      ))}
-
-      {/* 🍓 Main Card */}
-      <div className="bg-white p-6 rounded-2xl shadow-xl z-10">
-        <Image
-          src="/strawshort.png"
-          alt="Strawberry Shortcake"
-          width={300}
-          height={300}
-          priority
-        />
-      </div>
-
-      {/* 🎉 Title and Text */}
-      <h1 className="text-4xl sm:text-5xl font-bold text-[#e94d87] mt-8 text-center z-10">
-        🎉 Happy Birthday Stef! 🍓
-      </h1>
-      <p className="mt-4 text-lg text-center text-[#a33a56] max-w-xl z-10 font-bold">
-        😼 You're already 21! Time's flying :0 🍰💖
-      </p>
-
-      {/* 💌 Button */}
-      <Link
-        href="/letter"
-        className="mt-8 bg-[#e94d87] hover:bg-[#ff6b9d] text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-all duration-300 animate-bounce hover:animate-none z-10"
-      >
-        Click me 💌
-      </Link>
-
-      {/* 🎶 Background Music */}
+    <>
+      {/* 🎶 Background Music (rendered immediately) */}
       <audio ref={audioRef} autoPlay loop>
         <source src="/japanese-denim.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
-    </div>
+
+      {!hydrated ? null : (
+        <div className="relative min-h-screen bg-pink-100 flex flex-col items-center justify-center overflow-hidden p-8">
+          {/* 🌟 Star Icons */}
+          {starIcons.map((star, i) => (
+            <div key={i} className={`absolute text-yellow-400 ${star.className}`}>
+              {star.icon}
+            </div>
+          ))}
+
+          {/* ✨ Floating Photos */}
+          {floatingImages.map((img, i) => (
+            <Image
+              key={i}
+              src={img.src}
+              alt={img.alt}
+              width={220}
+              height={220}
+              className={`absolute rounded-xl shadow-md transition-all duration-1000 ${imageStates[i]?.visible ? "opacity-100" : "opacity-0"
+                }`}
+              style={{
+                top: imageStates[i]?.top,
+                left: imageStates[i]?.left,
+                transform: `rotate(${imageStates[i]?.rotate})`,
+                zIndex: 1,
+              }}
+            />
+          ))}
+
+          {/* 🍓 Main Card */}
+          <div className="bg-white p-6 rounded-2xl shadow-xl z-10">
+            <Image
+              src="/strawshort.png"
+              alt="Strawberry Shortcake"
+              width={300}
+              height={300}
+              priority
+            />
+          </div>
+
+          {/* 🎉 Title and Text */}
+          <h1 className="text-4xl sm:text-5xl font-bold text-[#e94d87] mt-8 text-center z-10">
+            🎉 Happy Birthday Stef! 🍓
+          </h1>
+          <p className="mt-4 text-lg text-center text-[#a33a56] max-w-xl z-10 font-bold">
+            😼 You're already 21! Time's flying :0 🍰💖
+          </p>
+
+          {/* 💌 Button */}
+          <Link
+            href="/letter"
+            className="mt-8 bg-[#e94d87] hover:bg-[#ff6b9d] text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-all duration-300 animate-bounce hover:animate-none z-10"
+          >
+            Click me 💌
+          </Link>
+        </div>
+      )}
+    </>
   );
 }
