@@ -39,7 +39,7 @@ export default function Letter() {
                 <h1 className="text-3xl font-bold text-[#e94d87] mb-4">💌 A Letter for You</h1>
                 <p className="text-lg text-[#a33a56] mb-6">
                     Dear Stef,<br /><br />
-                    Im so happy we've gotten so close in these last couple months >:) You've been such a great friend and i've rlly enjoyed our facetimes! 🍓🌸 I hope we keep talking and I hope u have a great 21st!!!💕<br /><br />
+                    Im so happy we've gotten so close in these last couple months {'>:)'} You've been such a great friend and i've rlly enjoyed our facetimes! 🍓🌸 I hope we keep talking and I hope u have a great 21st!!!💕<br /><br />
                     From,<br />
                     Your #1 Fan 🍰
                 </p>
