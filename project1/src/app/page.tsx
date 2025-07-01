@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from "react";
 
 const floatingImages = [
   { src: "/stef_2561.jpg", alt: "Decor 1" },
-  { src: "/stef_6210.jpeg", alt: "Decor 2" },
+  { src: "/stef_6210.JPEG", alt: "Decor 2" },
   { src: "/stef_7979.jpg", alt: "Decor 3" },
-  { src: "/stef_8104.png", alt: "Decor 4" },
+  { src: "/stef_8104.PNG", alt: "Decor 4" },
   { src: "/stef_8458.jpg", alt: "Decor 5" },
   { src: "/stef_8533.jpg", alt: "Decor 6" },
 ];
@@ -151,7 +151,7 @@ export default function Home() {
             🎉 Happy Birthday Stef! 🍓
           </h1>
           <p className="mt-4 text-lg text-center text-[#a33a56] max-w-xl z-10 font-bold">
-            😼 You're already 21! Time's flying :0 🍰💖
+            😼 yippeee finally 21! time's flying by :0 🍰💖
           </p>
 
           {/* 💌 Button */}
