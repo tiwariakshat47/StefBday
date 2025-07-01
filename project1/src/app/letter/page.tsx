@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+
 
 export default function Letter() {
     const audioRef = useRef<HTMLAudioElement>(null);
@@ -37,9 +39,9 @@ export default function Letter() {
                 <h1 className="text-3xl font-bold text-[#e94d87] mb-4">💌 A Letter for You</h1>
                 <p className="text-lg text-[#a33a56] mb-6">
                     Dear Stef,<br /><br />
-                    You bring sweetness, sunshine, and sparkles into every room. I hope today is filled with everything that makes you smile — strawberry dreams, soft hugs, and lots of love. 🍓🌸💕<br /><br />
-                    Love always,<br />
-                    Your #1 Shortcake Fan 🍰
+                    Im so happy we've gotten so close in these last couple months >:) You've been such a great friend and i've rlly enjoyed our facetimes! 🍓🌸 I hope we keep talking and I hope u have a great 21st!!!💕<br /><br />
+                    From,<br />
+                    Your #1 Fan 🍰
                 </p>
                 <Image
                     src="/akshatstef.JPEG"
@@ -47,7 +49,18 @@ export default function Letter() {
                     width={400}
                     height={400}
                     className="rounded-lg mx-auto shadow-md"
+
                 />
+
+                <Link
+                    href="/gifts"
+                    className="mt-6 inline-block bg-[#e94d87] hover:bg-[#ff6b9d] text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-all duration-300 animate-bounce hover:animate-none"
+                >
+                    🎁 See Your Birthday Gifts
+                </Link>
+
+
+
             </div>
 
             {/* Background music */}
