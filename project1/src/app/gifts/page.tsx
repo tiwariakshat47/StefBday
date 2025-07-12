@@ -29,8 +29,9 @@ export default function GiftsPage() {
                 GET READY FOR SOME FUN DAYS IN SEPTEMBER :3
             </p>
 
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-12 relative w-full max-w-6xl">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 z-10">
+            <div className="relative w-full max-w-6xl flex flex-col lg:flex-row items-start justify-center gap-12">
+                {/* Gift images */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-shrink-0 z-10">
                     <Image
                         src="/dintaifung.png"
                         alt="Din Tai Fung"
@@ -47,18 +48,21 @@ export default function GiftsPage() {
                     />
                 </div>
 
-                <Image
-                    src="/calendar_sept14.png"
-                    alt="Calendar - Sept 14"
-                    width={600}
-                    height={600}
-                    className="rounded-xl shadow-xl z-0 lg:absolute right-[-40px] top-[140px] hidden lg:block"
-                />
+                {/* Calendar Image */}
+                <div className="hidden lg:block flex-shrink-0">
+                    <Image
+                        src="/calendar_sept14.png"
+                        alt="Calendar - Sept 14"
+                        width={400}
+                        height={400}
+                        className="rounded-xl shadow-xl"
+                    />
+                </div>
             </div>
 
             <Link
                 href="/letter"
-                className="mt-12 bg-[#e94d87] hover:bg-[#ff6b9d] text-white font-semibold px-6 py-3 rounded-full shadow-md transition duration-300"
+                className="mt-12 bg-[#e94d87] hover:bg-[#ff6b9d] text-white font-semibold px-6 py-3 rounded-full shadow-md transition duration-300 z-20"
             >
                 ⬅️ Back to Letter
             </Link>
