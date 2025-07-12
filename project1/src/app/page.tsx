@@ -151,7 +151,7 @@ export default function Home() {
             🎉 Happy Birthday Stef! 🍓
           </h1>
           <p className="mt-4 text-lg text-center text-[#a33a56] max-w-xl z-10 font-bold">
-            😼 yippeee finally 21! time's flying by :0 🍰💖
+            😼 yippeee finally 21! time's flying by :0 💖
           </p>
 
           {/* 💌 Button */}
